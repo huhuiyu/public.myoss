@@ -1,0 +1,20 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.pd05 {
+  padding: 0.5rem;
+}
+
+.group-pd05 .input-group {
+  padding: 0.5rem;
+}

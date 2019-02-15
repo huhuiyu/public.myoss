@@ -1,2 +1,1 @@
-# public.myoss
-oss存储演示项目
+# oss存储管理演示项目

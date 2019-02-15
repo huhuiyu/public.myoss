@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.huhuiyu.oss.dao.TbOssConfigDAO">
+
+  <select id="queryByAdminNoInfo" resultType="TbOssConfig" parameterType="TbAdmin">
+    select ocid,bucketName,expiration from TbOssConfig
+    where ocid in (select ocid from TbAdminOssConfig where aid = #{aid}) and enable='y'
+  </select>
+
+  <select id="queryByAdmin" resultType="TbOssConfig" parameterType="TbAdmin">
+    select ocid,endpoint,accessKeyId,accessKeySecret,bucketName,expiration,enable,lastupdate from TbOssConfig
+    where ocid in (select ocid from TbAdminOssConfig where aid = #{aid})
+  </select>
+
+  <select id="queryAll" resultType="TbOssConfig">
+    select ocid,endpoint,accessKeyId,accessKeySecret,bucketName,expiration,enable,lastupdate from TbOssConfig
+  </select>
+
+  <select id="queryAll_COUNT" resultType="int">
+    select count(*) from TbOssConfig
+  </select>
+
+  <select id="queryByKey" parameterType="TbOssConfig" resultType="TbOssConfig">
+    select ocid,endpoint,accessKeyId,accessKeySecret,bucketName,expiration,enable,lastupdate from TbOssConfig
+    where ocid=#{ocid}
+  </select>
+
+  <insert id="add" parameterType="TbOssConfig">
+    insert into TbOssConfig(ocid,endpoint,accessKeyId,accessKeySecret,bucketName,expiration)
+    values(#{ocid},#{endpoint},#{accessKeyId},#{accessKeySecret},#{bucketName},#{expiration})
+  </insert>
+
+  <update id="update" parameterType="TbOssConfig">
+    update TbOssConfig set endpoint=#{endpoint},accessKeyId=#{accessKeyId},accessKeySecret=#{accessKeySecret},bucketName=#{bucketName},expiration=#{expiration},enable=#{enable}
+    where ocid=#{ocid} and ocid in (select ocid from TbAdminOssConfig where aid = #{tbAdmin.aid})
+  </update>
+
+  <delete id="delete" parameterType="TbOssConfig">
+    delete from TbOssConfig
+    where ocid=#{ocid}
+  </delete>
+
+</mapper>

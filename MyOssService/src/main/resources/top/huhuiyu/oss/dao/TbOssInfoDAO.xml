@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.huhuiyu.oss.dao.TbOssInfoDAO">
+  <select id="queryCountByOcid" resultType="int" parameterType="TbOssInfo">
+    select count(*) from TbOssInfo
+    where ocid=#{ocid}
+  </select>
+
+  <select id="queryAll" resultType="TbOssInfo" parameterType="TbOssInfo">
+    select oiid,ocid,objectName,filename,contentType,filesize,fileinfo,lastupdate from TbOssInfo
+    <trim prefix="where" prefixOverrides="and">
+      <!-- 通过fileinfo过滤 -->
+      <if test="fileinfo!=null and fileinfo!=''">
+        and fileinfo like #{fileinfo}
+      </if>
+      <!-- 通过ocid过滤 -->
+      <if test="ocid!=null and ocid!=''">
+        and ocid = #{ocid}
+      </if>
+      and ocid in (select ocid from TbAdminOssConfig where aid = #{tbAdmin.aid})
+    </trim>
+    order by lastupdate desc
+  </select>
+
+  <select id="queryAll_COUNT" resultType="int" parameterType="TbOssInfo">
+    select count(*) from TbOssInfo
+    <trim prefix="where" prefixOverrides="and">
+      <!-- 通过fileinfo过滤 -->
+      <if test="fileinfo!=null and fileinfo!=''">
+        and fileinfo like #{fileinfo}
+      </if>
+      <!-- 通过ocid过滤 -->
+      <if test="ocid!=null and ocid!=''">
+        and ocid = #{ocid}
+      </if>
+    </trim>
+  </select>
+
+  <select id="queryByKey" parameterType="TbOssInfo" resultType="TbOssInfo">
+    select oiid,ocid,objectName,filename,contentType,filesize,fileinfo,lastupdate from TbOssInfo
+    where oiid=#{oiid}
+  </select>
+
+  <select id="queryByObjectName" parameterType="TbOssInfo" resultType="TbOssInfo">
+    select oiid,ocid,objectName,filename,contentType,filesize,fileinfo,lastupdate from TbOssInfo
+    where objectName=#{objectName}
+  </select>
+
+  <insert id="add" parameterType="TbOssInfo">
+    insert into TbOssInfo(ocid,objectName,filename,contentType,filesize,fileinfo)
+    values(#{ocid},#{objectName},#{filename},#{contentType},#{filesize},#{fileinfo})
+  </insert>
+
+  <update id="update" parameterType="TbOssInfo">
+    update TbOssInfo set
+    ocid=#{ocid},filename=#{filename},contentType=#{contentType},filesize=#{filesize},fileinfo=#{fileinfo}
+    where oiid=#{oiid}
+  </update>
+
+  <delete id="delete" parameterType="TbOssInfo">
+    delete from TbOssInfo
+    where oiid=#{oiid}
+  </delete>
+
+</mapper>

@@ -1,0 +1,29 @@
+<div ng-controller="ConfigAddCtrl">
+  <div class="text-center">添加oss配置信息</div>
+  <div class="form-group group-pd05">
+    <div class="input-group">
+      <span class="input-group-addon">endpoint</span>
+      <input type="text" class="form-control" ng-model="model.tbOssConfig.endpoint">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">accessKeyId</span>
+      <input type="text" class="form-control" ng-model="model.tbOssConfig.accessKeyId">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">accessKeySecret</span>
+      <input type="text" class="form-control" ng-model="model.tbOssConfig.accessKeySecret">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">bucketName</span>
+      <input type="text" class="form-control" ng-model="model.tbOssConfig.bucketName">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">链接过期时间</span>
+      <input type="text" class="form-control" ng-model="model.tbOssConfig.expiration">
+    </div>
+    <div class="text-center">
+      <span class="btn btn-danger" ng-click="add();">保存</span>
+      <span class="btn btn-danger" ng-click="closeMe();">关闭</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div ng-controller="OssInfoModifyCtrl">
+  <div class="text-center">oss信息修改</div>
+  <div class="form-group group-pd05">
+    <div class="input-group">
+      <span class="input-group-addon">文件</span>
+      <input type="file" class="form-control" onchange="angular.element(this).scope().changeFile(this);">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">ocid</span>
+      <!-- <input type="text" class="form-control" ng-model="model.tbOssInfo.ocid"> -->
+      <select class="form-control" ng-model="model.tbOssInfo.ocid">
+        <option ng-repeat="o in ocids" ng-value="o.ocid">
+          {{o.bucketName}} {{o.ocid}}
+        </option>
+      </select>
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">描述</span>
+      <input type="text" class="form-control" ng-model="model.tbOssInfo.fileinfo">
+    </div>
+    <div class="text-center">
+      <span class="btn btn-danger" ng-click="modify();">上传</span>
+      <span class="btn btn-danger" ng-click="closeMe();">关闭</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div ng-controller="MainCtrl" class="main">
+  <div class="form-inline text-right title bg-primary">
+    <span ng-repeat="m in menus" ng-bind="m.text" ng-click="changePage($index);" class="btn btn-danger"></span>
+    <span class="btn btn-info" ng-click="changePwd();">修改密码</span>
+    <span class="btn btn-info" ng-click="logout();">安全退出</span>
+  </div>
+  <div>
+    <div ng-include="menu"></div>
+  </div>
+</div>

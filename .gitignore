@@ -1,0 +1,13 @@
+MyOssService/.classpath
+MyOssService/.project
+MyOssService/.gradle/
+MyOssService/.settings/
+MyOssService/bin/
+MyOssService/build/
+MyOssService/logs/
+MyOssServiceStatic/node_modules/
+MyOssServiceStatic/nginx/logs/
+MyOssServiceStatic/nginx/temp/
+MyOssServiceStatic/dist/
+MyOssServiceStatic/browser.js
+MyOssServiceStatic/nginx-path.bat

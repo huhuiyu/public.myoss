@@ -1,0 +1,38 @@
+<div ng-controller="RegCtrl" class="index h100">
+  <div class="div-main">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">用户注册</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="iconfont">&#xe645;</i></span>
+            <input type="text" ng-model="model.tbAdmin.username" focus-on="{{focus.username}}" class="form-control" placeholder="请输入用户名">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="iconfont">&#xe662;</i></span>
+            <input type="password" ng-model="model.tbAdmin.password" class="form-control" placeholder="请输入密码">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="iconfont">&#xe662;</i></span>
+            <input type="password" ng-model="other.pwd1" class="form-control" placeholder="请输入确认密码">
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <div class="checkbox">
+                <input type="checkbox" ng-model="other.agreement">
+                <span ng-click="showAgreement();" style="cursor: pointer;">查看协议内容</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <span class="btn btn-danger" ng-click="reg();">注册 <i class="iconfont">&#xe628;</i></span>
+            <span class="btn btn-info" ng-click="back();">返回登录 <i class="iconfont">&#xe845;</i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

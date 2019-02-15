@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.huhuiyu.oss.dao.TbAdminOssConfigDAO">
+
+  <select id="queryAll" resultType="TbAdminOssConfig">
+    select aid,ocid,lastupdate from TbAdminOssConfig
+  </select>
+
+  <select id="queryAll_COUNT" resultType="int">
+    select count(*) from TbAdminOssConfig
+  </select>
+
+  <select id="queryByKey" parameterType="TbAdminOssConfig" resultType="TbAdminOssConfig">
+    select aid,ocid,lastupdate from TbAdminOssConfig
+    where aid=#{aid} and ocid=#{ocid}
+  </select>
+
+  <insert id="add" parameterType="TbAdminOssConfig">
+    insert into TbAdminOssConfig(aid,ocid)
+    values(#{aid},#{ocid})
+  </insert>
+
+  <update id="update" parameterType="TbAdminOssConfig">
+    update TbAdminOssConfig set lastupdate=#{lastupdate}
+    where aid=#{aid} and ocid=#{ocid}
+  </update>
+
+  <delete id="delete" parameterType="TbAdminOssConfig">
+    delete from TbAdminOssConfig
+    where aid=#{aid} and ocid=#{ocid}
+  </delete>
+
+</mapper>
