@@ -7,7 +7,7 @@
     controllers: 'controllers',
     directives: 'directives',
     uploadLimit: 157286400,
-    dataservice: 'http://39.108.124.237/myossdataservice',
+    dataservice: 'http://demo.huhuiyu.top/myossdataservice',
     debug: true
   };
 
